@@ -1,69 +1,57 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", {value: true});
-var isObject_notObject_1 = require("./index");
+var modl = require("./index");
 
 
-if (isObject_notObject_1.isObject([]))
+if (modl.isFiniteNumber(1))
 	console.log('test 1 passed');
 else
 	console.log('test 1 FAILED');
 
 
-if (isObject_notObject_1.isObject({}))
+if (modl.isFiniteNumber(1.000001))
 	console.log('test 2 passed');
 else
 	console.log('test 2 FAILED');
 
 
-if (isObject_notObject_1.notObject(null))
+if (modl.isFiniteNumber(Number.MIN_VALUE))
+	console.log('test 2A passed');
+else
+	console.log('test 2A FAILED');
+
+
+if (modl.isFiniteNumber(Number.MAX_VALUE))
+	console.log('test 2B passed');
+else
+	console.log('test 2B FAILED');
+
+
+if (modl.notFiniteNumber(NaN))
 	console.log('test 3 passed');
 else
 	console.log('test 3 FAILED');
 
 
-if (isObject_notObject_1.notObject('asdf'))
+if (modl.notFiniteNumber(Infinity))
+	console.log('test 3A passed');
+else
+	console.log('test 3A FAILED');
+
+
+if (modl.notFiniteNumber('1'))
 	console.log('test 4 passed');
 else
 	console.log('test 4 FAILED');
 
 
-if (isObject_notObject_1.notObject(10))
-	console.log('test 5 passed');
-else
-	console.log('test 5 FAILED');
-
-
-if (isObject_notObject_1.notObject(true))
+if (modl.notFiniteNumber('1.000001'))
 	console.log('test 6 passed');
 else
 	console.log('test 6 FAILED');
 
 
-if (isObject_notObject_1.notObject(undefined))
+if (modl.notFiniteNumber(Number.POSITIVE_INFINITY))
 	console.log('test 7 passed');
 else
 	console.log('test 7 FAILED');
-
-
-// Even if string is created using String() conversion function, it's
-// not considered an object:
-var str = String('boo');
-if (isObject_notObject_1.notObject(str))
-	console.log('test 8 passed');
-else
-	console.log('test 8 FAILED');
-
-
-if (isObject_notObject_1.notObject(function() {
-	return '';
-}))
-	console.log('test 9 passed');
-else
-	console.log('test 9 FAILED');
-
-
-var sym = Symbol('r');
-if (isObject_notObject_1.notObject(sym))
-	console.log('test 10 passed');
-else
-	console.log('test 10 FAILED');
